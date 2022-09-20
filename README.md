@@ -6,22 +6,14 @@ Scan their QR code to add them to your list of Peeps (QRPeeps' fancy way of sayi
 
 Schedule a local notification to remind you to contact them.
 
-Mark your peeps as contacted or to contact.
+Mark your peeps, sort them, stick'em in a stew. 🥔🥣
 
 Generate your own QR code for people to scan so they can do the same with you.
 
+## How
 This app uses 2 packages:
-* [AirBnB Lottie iOS](https://github.com/airbnb/lottie-ios).
+* [AirBnB Lottie iOS](https://github.com/airbnb/lottie-ios)
 * [Paul Hudson's QR code scanner](https://github.com/twostraws/CodeScanner)
-
-## In progress
-* MVVM pattern
-* Error handling (needs improvement)
-* Prevent being able to add same person more than once
-* NavigationLink for each Peep to allow for:
-  * Detailed view of selected Peep
-  * Editing of selected Peep (add picture, other...)
-
 
 ## App icon
 Made using Figma.
@@ -40,3 +32,11 @@ Lottie empty state app demo.
 <p align="center">
   <img src="media/lottie_demo.gif" alt="animated"/>
 </p>
+
+## In progress
+* MVVM pattern
+* Error handling (needs improvement)
+* Prevent being able to add same person more than once
+* NavigationLink for each Peep to allow for:
+  * Detailed view of selected Peep
+  * Editing of selected Peep (add picture, other...)
