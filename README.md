@@ -2,13 +2,13 @@
 Ever been somewhere cool and met new people that you'd like to stay in touch with?
 QRPeeps allows you do just that.
 
-Scan their QR code to add them to your list of Peeps (QRPeeps' fancy way of saying _people_).
+Scan their QR code to add them to your list of Peeps (QRPeeps' fancy way of saying _people_ 😄).
 
-Schedule a local notification to remind you to contact them.
+Schedule a local notification to remind you to contact them (currently set for 9am. Early birds only 🐥)
 
 Mark your peeps, sort them, stick'em in a stew. 🥔🥣
 
-Generate your own QR code for people to scan so they can do the same with you.
+Generate your own QR code for people to scan so they can do the same with you. 📸
 
 ## How
 This app uses 2 packages:
