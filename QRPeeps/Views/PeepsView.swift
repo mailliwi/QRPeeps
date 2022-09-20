@@ -136,11 +136,7 @@ struct PeepsView: View {
                 }
             }
             .navigationTitle(title)
-            .overlay(Group {
-                if peeps.people.isEmpty {
-                    EmptyStateView()
-                }
-            })
+            .emptyListPlaceholder(condition: peeps.people.isEmpty)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
