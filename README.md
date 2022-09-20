@@ -2,7 +2,7 @@
 Ever been somewhere cool and met new people that you'd like to stay in touch with?
 QRPeeps allows you do just that.
 
-Scan their QR code to add them to your list of Peeps (QRPeeps' way of naming people).
+Scan their QR code to add them to your list of Peeps (QRPeeps' fancy way of saying _people_).
 Schedule a notification to remind you to contact them.
 Generate your own QR code for people to scan so they can do the same with you.
 
