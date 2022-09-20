@@ -45,9 +45,9 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("Your email address...") {
+                Section("Email address") {
                     HStack {
-                        TextField("Email address", text: $emailAddress)
+                        TextField("Your email address...", text: $emailAddress)
                             .textContentType(.emailAddress)
                             .disableAutocorrection(true)
                         Image(systemName: "envelope")
@@ -55,7 +55,7 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("Your QR code") {
+                Section("Long press to save QR code to Photo Library") {
                     HStack {
                         Spacer()
                         Image(uiImage: qrCode)
