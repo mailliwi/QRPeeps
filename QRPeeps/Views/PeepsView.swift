@@ -10,14 +10,6 @@ import SwiftUI
 import UserNotifications
 
 struct PeepsView: View {
-    enum PeepFilterType {
-        case none, contacted, uncontacted
-    }
-    
-    enum PeepSortType {
-        case name, date
-    }
-    
     @EnvironmentObject var peeps: Peeps
     @State private var isShowingScanner = false
     @State private var isShowingAlert = false
@@ -25,6 +17,119 @@ struct PeepsView: View {
     @State private var isShowingSortOptions = false
     
     let filter: PeepFilterType
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(filteredPeeps) { peep in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(peep.name)
+                            Text(peep.emailAddress)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        if filter == .none {
+                            Spacer()
+                            Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .foregroundColor(peep.isContacted ? .green : .red)
+                        }
+                    }
+                    .swipeActions {
+                        if peep.isContacted {
+                            Button {
+                                peeps.toggleIsContacted(for: peep)
+                            } label: {
+                                Label("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark")
+                            }
+                            .tint(.blue)
+                        } else {
+                            Button {
+                                peeps.toggleIsContacted(for: peep)
+                            } label: {
+                                Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
+                            }
+                            .tint(.green)
+                            
+                            Button {
+                                addNotification(for: peep)
+                            } label: {
+                                Label("Remind Me", systemImage: "bell")
+                            }
+                            .tint(.orange)
+                        }
+                    }
+                }
+            }
+            .navigationTitle(title)
+            .emptyListPlaceholder(condition: peeps.people.isEmpty)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if peeps.people.isEmpty {
+                        EmptyView()
+                    } else {
+                        Button {
+                            isShowingAlert = true
+                        } label: {
+                            Label("Empty peeps.people", systemImage: "trash")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+                
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingSortOptions = true
+                    } label: {
+                        Label("Sort peeps", systemImage: "slider.horizontal.3")
+                    }
+                    
+                    Button {
+                        isShowingScanner = true
+                        
+                        // for simulator purposes
+                        // The following lines of code simulate adding a peep to your list
+                        // Needs deleted if planning to use on a real device, otherwise this dummy
+                        // peep will be added on top of the scanned accounts
+                        
+//                        let peep = Peep()
+//                        peep.name = "Kiwiwi"
+//                        peep.emailAddress = "testemail"
+//                        peeps.add(peep)
+                        
+                    } label: {
+                        Label("Scan QR Code", systemImage: "qrcode.viewfinder")
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(codeTypes: [.qr], completion: handleScan)
+            }
+            .confirmationDialog("Sort peeps by", isPresented: $isShowingSortOptions) {
+                Button("Name (A-Z)") { sortOrder = .name }
+                Button("Date (Newest to Oldest)") { sortOrder = .date }
+            } message: {
+                Text("Sort peeps by...")
+            }
+            .alert("Delete all peeps?", isPresented: $isShowingAlert, actions: {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    peeps.removeAll()
+                }
+            }, message: {
+                Text("By pressing 'delete', your list of peeps will be cleared out.\n\nThis action is irreversible.\nDo you wish to continue?")
+            })
+        }
+    }
+    
+    enum PeepFilterType {
+        case none, contacted, uncontacted
+    }
+    
+    enum PeepSortType {
+        case name, date
+    }
     
     var title: String {
         switch filter {
@@ -103,110 +208,6 @@ struct PeepsView: View {
                     }
                 }
             }
-        }
-    }
-    
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(filteredPeeps) { peep in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(peep.name)
-                            Text(peep.emailAddress)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if filter == .none {
-                            Spacer()
-                            Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                .foregroundColor(peep.isContacted ? .green : .red)
-                        }
-                    }
-                    .swipeActions {
-                        if peep.isContacted {
-                            Button {
-                                peeps.toggleIsContacted(for: peep)
-                            } label: {
-                                Label("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark")
-                            }
-                            .tint(.blue)
-                        } else {
-                            Button {
-                                peeps.toggleIsContacted(for: peep)
-                            } label: {
-                                Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
-                            }
-                            .tint(.green)
-                            
-                            Button {
-                                addNotification(for: peep)
-                            } label: {
-                                Label("Remind Me", systemImage: "bell")
-                            }
-                            .tint(.orange)
-                        }
-                    }
-                }
-            }
-            .navigationTitle(title)
-            .emptyListPlaceholder(condition: peeps.people.isEmpty)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if peeps.people.isEmpty {
-                        EmptyView()
-                    } else {
-                        Button {
-                            isShowingAlert = true
-                        } label: {
-                            Label("Empty peeps.people", systemImage: "trash")
-                                .foregroundColor(.red)
-                        }
-                    }
-                }
-                
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button {
-                        isShowingSortOptions = true
-                    } label: {
-                        Label("Sort peeps", systemImage: "slider.horizontal.3")
-                    }
-                    
-                    Button {
-                        isShowingScanner = true
-                        
-                        // for simulator purposes
-                        // The following lines of code simulate adding a peep to your list
-                        // Needs deleted if planning to use on a real device, otherwise this dummy
-                        // peep will be added on top of the scanned accounts
-                        let peep = Peep()
-                        peep.name = "Kiwiwi"
-                        peep.emailAddress = "testemail"
-                        peeps.add(peep)
-                        
-                    } label: {
-                        Label("Scan QR Code", systemImage: "qrcode.viewfinder")
-                    }
-                }
-            }
-            .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(codeTypes: [.qr], completion: handleScan)
-            }
-            .confirmationDialog("Sort peeps by", isPresented: $isShowingSortOptions) {
-                Button("Name (A-Z)") { sortOrder = .name }
-                Button("Date (Newest to Oldest)") { sortOrder = .date }
-            } message: {
-                Text("Sort peeps by...")
-            }
-            .alert("Delete all peeps?", isPresented: $isShowingAlert, actions: {
-                Button("Cancel", role: .cancel) { }
-                Button("Delete", role: .destructive) {
-                    peeps.removeAll()
-                }
-            }, message: {
-                Text("By pressing 'delete', your list of peeps will be cleared out.\n\nThis action is irreversible.\nDo you wish to continue?")
-            })
         }
     }
 }
