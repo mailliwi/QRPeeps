@@ -32,7 +32,7 @@ Made using Figma.
 </p>
 
 ## Preview GIF
-Pokedex app demo.
+Lottie empty state app demo.
 <p align="center">
   <img src="media/lottie_demo.gif" alt="animated"/>
 </p>
