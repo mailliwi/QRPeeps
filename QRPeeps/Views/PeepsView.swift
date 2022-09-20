@@ -139,17 +139,26 @@ struct PeepsView: View {
             .emptyListPlaceholder(condition: peeps.people.isEmpty)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        isShowingAlert = true
-                    } label: {
-                        Label("Empty peeps.people", systemImage: "trash")
-                            .foregroundColor(.red)
+                    if peeps.people.isEmpty {
+                        EmptyView()
+                    } else {
+                        Button {
+                            isShowingAlert = true
+                        } label: {
+                            Label("Empty peeps.people", systemImage: "trash")
+                                .foregroundColor(.red)
+                        }
                     }
                 }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isShowingScanner = true
                         
+                        // for simulator purposes
+                        // The following lines of code simulate adding a peep to your list
+                        // Needs deleted if planning to use on a real device, otherwise this dummy
+                        // peep will be added on top of the scanned accounts
                         let peep = Peep()
                         peep.name = "Kiwiwi"
                         peep.emailAddress = "testemail"
@@ -158,6 +167,7 @@ struct PeepsView: View {
                     } label: {
                         Label("Scan QR Code", systemImage: "qrcode.viewfinder")
                     }
+                    
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
