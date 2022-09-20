@@ -6,7 +6,7 @@ Scan their QR code to add them to your list of Peeps (QRPeeps' fancy way of sayi
 Schedule a notification to remind you to contact them.
 Generate your own QR code for people to scan so they can do the same with you.
 
-This app is using 2 packages:
+This app uses 2 packages:
 * [AirBnB Lottie iOS](https://github.com/airbnb/lottie-ios).
 * [Paul Hudson's QR code scanner](https://github.com/twostraws/CodeScanner)
 
