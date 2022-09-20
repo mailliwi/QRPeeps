@@ -15,10 +15,8 @@ struct LottieEmptyStateView: UIViewRepresentable {
         
         let view = UIView(frame: .zero)
         
-        let lottieAnimationView = AnimationView()
-        let animation = Animation.named(fileName)
+        let lottieAnimationView = AnimationView(name: fileName)
         
-        lottieAnimationView.animation = animation
         lottieAnimationView.contentMode = .scaleAspectFit
         lottieAnimationView.loopMode = .loop
         lottieAnimationView.play()
