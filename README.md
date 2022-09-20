@@ -25,6 +25,7 @@ Made using Figma.
 <p align="center">
   <img src="media/row1.png"/>
   <img src="media/row2.png"/>
+  <img src="media/notification.png"/>
 </p>
 
 ## Preview GIF
