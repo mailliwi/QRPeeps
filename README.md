@@ -22,7 +22,7 @@ This app uses 2 packages:
 ## App icon
 Made using Figma.
 <p align="center">
-  <img src="media/app_logo.png"/>
+  <img src="QRPeeps/Assets.xcassets/AppIcon.appiconset/180.png"/>
 </p>
 
 ## Media
@@ -34,5 +34,5 @@ Made using Figma.
 ## Preview GIF
 Pokedex app demo.
 <p align="center">
-  <img src="media/demo.gif" alt="animated"/>
+  <img src="media/lottie_demo.gif" alt="animated"/>
 </p>
