@@ -14,9 +14,15 @@ struct PeepsView: View {
         case none, contacted, uncontacted
     }
     
+    enum PeepSortType {
+        case name, date
+    }
+    
     @EnvironmentObject var peeps: Peeps
     @State private var isShowingScanner = false
     @State private var isShowingAlert = false
+    @State private var sortOrder: PeepSortType = .date
+    @State private var isShowingSortOptions = false
     
     let filter: PeepFilterType
     
@@ -32,13 +38,21 @@ struct PeepsView: View {
     }
     
     var filteredPeeps: [Peep] {
+        let result: [Peep]
+        
         switch filter {
         case .none:
-            return peeps.people
+            result = peeps.people
         case .contacted:
-            return peeps.people.filter { $0.isContacted }
+            result = peeps.people.filter { $0.isContacted }
         case .uncontacted:
-            return peeps.people.filter { !$0.isContacted }
+            result = peeps.people.filter { !$0.isContacted }
+        }
+        
+        if sortOrder == .name {
+            return result.sorted { $0.name < $1.name }
+        } else {
+            return result
         }
     }
     
@@ -152,7 +166,13 @@ struct PeepsView: View {
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingSortOptions = true
+                    } label: {
+                        Label("Sort peeps", systemImage: "slider.horizontal.3")
+                    }
+                    
                     Button {
                         isShowingScanner = true
                         
@@ -168,11 +188,16 @@ struct PeepsView: View {
                     } label: {
                         Label("Scan QR Code", systemImage: "qrcode.viewfinder")
                     }
-                    
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], completion: handleScan)
+            }
+            .confirmationDialog("Sort peeps by", isPresented: $isShowingSortOptions) {
+                Button("Name (A-Z)") { sortOrder = .name }
+                Button("Date (Newest to Oldest)") { sortOrder = .date }
+            } message: {
+                Text("Sort peeps by...")
             }
             .alert("Delete all peeps?", isPresented: $isShowingAlert, actions: {
                 Button("Cancel", role: .cancel) { }
