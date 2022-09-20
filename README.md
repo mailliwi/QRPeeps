@@ -12,7 +12,7 @@ Generate your own QR code for people to scan so they can do the same with you. ð
 
 ## How
 This app uses 2 packages:
-* [AirBnB Lottie iOS](https://github.com/airbnb/lottie-ios)
+* [AirBnB's Lottie Animation for iOS](https://github.com/airbnb/lottie-ios)
 * [Paul Hudson's QR code scanner](https://github.com/twostraws/CodeScanner)
 
 ## App icon
