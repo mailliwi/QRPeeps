@@ -104,10 +104,11 @@ struct PeepsView: View {
                                 .foregroundColor(.secondary)
                         }
                         
-                        Spacer()
-                        
-                        Image(systemName: "circle")
-                            .foregroundColor(peep.isContacted ? .green : .red)
+                        if filter == .none {
+                            Spacer()
+                            Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .foregroundColor(peep.isContacted ? .green : .red)
+                        }
                     }
                     .swipeActions {
                         if peep.isContacted {
