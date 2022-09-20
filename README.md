@@ -22,12 +22,13 @@ This app uses 2 packages:
 ## App icon
 Made using Figma.
 <p align="center">
-  <img src="Pokedex/Assets.xcassets/AppIcon.appiconset/180.png"/>
+  <img src="media/app_logo.png"/>
 </p>
 
 ## Media
 <p align="center">
-  <img src="media/media.png"/>
+  <img src="media/row1.png"/>
+  <img src="media/row2.png"/>
 </p>
 
 ## Preview GIF
