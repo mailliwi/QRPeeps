@@ -32,6 +32,7 @@ Made using Figma.
 Lottie empty state app demo.
 <p align="center">
   <img src="media/lottie_demo.gif" alt="animated"/>
+  <img src="media/camera.gif" alt="animated"/>
 </p>
 
 ## In progress
