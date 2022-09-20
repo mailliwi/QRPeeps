@@ -16,10 +16,10 @@ class Peep: Identifiable, Codable {
 
 @MainActor class Peeps: ObservableObject {
     @Published private(set) var people: [Peep]
-    let saveKey: String = "SavedData"
+    let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedData")
     
     init() {
-        if let data = UserDefaults.standard.data(forKey: saveKey) {
+        if let data = try? Data(contentsOf: savePath) {
             if let decoded = try? JSONDecoder().decode([Peep].self, from: data) {
                 self.people = decoded
                 return
@@ -31,25 +31,25 @@ class Peep: Identifiable, Codable {
     
     func add(_ peep: Peep) {
         people.insert(peep, at: 0)
-        saveToUserDefaults()
+        saveToDocumentsDirectory()
     }
     
     func removeAll() {
         people = []
-        UserDefaults.standard.removeObject(forKey: saveKey)
+        try? FileManager.default.removeItem(at: savePath)
         UserDefaults.standard.synchronize()
-        saveToUserDefaults()
+        saveToDocumentsDirectory()
     }
     
-    private func saveToUserDefaults() {
+    private func saveToDocumentsDirectory() {
         if let encoded = try? JSONEncoder().encode(self.people) {
-            UserDefaults.standard.set(encoded, forKey: saveKey)
+            try? encoded.write(to: savePath, options: [.atomic, .completeFileProtection])
         }
     }
     
     func toggleIsContacted(for peep: Peep) {
         objectWillChange.send()
         peep.isContacted.toggle()
-        saveToUserDefaults()
+        saveToDocumentsDirectory()
     }
 }
