@@ -8,10 +8,10 @@
 import SwiftUI
 import Lottie
 
-struct LottieEmptyStateView: UIViewRepresentable {
+struct LottieView: UIViewRepresentable {
     var fileName: String
     
-    func makeUIView(context: UIViewRepresentableContext<LottieEmptyStateView>) -> some UIView {
+    func makeUIView(context: UIViewRepresentableContext<LottieView>) -> some UIView {
         
         let view = UIView(frame: .zero)
         
@@ -32,7 +32,7 @@ struct LottieEmptyStateView: UIViewRepresentable {
         return view
     }
     
-    func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<LottieEmptyStateView>) {
+    func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<LottieView>) {
         
     }
 }

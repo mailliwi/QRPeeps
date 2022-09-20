@@ -94,10 +94,6 @@ struct PeepsView: View {
     
     var body: some View {
         NavigationView {
-            if peeps.people.isEmpty {
-                LottieEmptyStateView(fileName: "tumbleweed")
-                    .frame(width: 300)
-            }
             List {
                 ForEach(filteredPeeps) { peep in
                     HStack {
@@ -140,6 +136,11 @@ struct PeepsView: View {
                 }
             }
             .navigationTitle(title)
+            .overlay(Group {
+                if peeps.people.isEmpty {
+                    EmptyStateView()
+                }
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
