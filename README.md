@@ -3,7 +3,11 @@ Ever been somewhere cool and met new people that you'd like to stay in touch wit
 QRPeeps allows you do just that.
 
 Scan their QR code to add them to your list of Peeps (QRPeeps' fancy way of saying _people_).
-Schedule a notification to remind you to contact them.
+
+Schedule a local notification to remind you to contact them.
+
+Mark your peeps as contacted or to contact.
+
 Generate your own QR code for people to scan so they can do the same with you.
 
 This app uses 2 packages:
