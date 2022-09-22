@@ -21,7 +21,7 @@ Made using Figma.
   <img src="QRPeeps/Assets.xcassets/AppIcon.appiconset/180.png"/>
 </p>
 
-## Media
+## Screenshots
 <p align="center">
   <img src="media/row1.png"/>
   <img src="media/row2.png"/>
