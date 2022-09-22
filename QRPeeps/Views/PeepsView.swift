@@ -38,6 +38,7 @@ struct PeepsView: View {
                                     .foregroundColor(peep.isContacted ? .green : .red)
                             }
                         }
+                        .padding(.vertical, 6)
                     }
                     .swipeActions {
                         if peep.isContacted {
