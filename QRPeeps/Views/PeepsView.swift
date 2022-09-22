@@ -22,13 +22,14 @@ struct PeepsView: View {
         NavigationView {
             List {
                 ForEach(filteredPeeps) { peep in
-                    NavigationLink(destination: Text(peep.name)) {
+                    NavigationLink(destination: DetailedPeepView(peep: peep)) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(peep.name)
                                 Text(peep.emailAddress)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
+                                    .textCase(.lowercase)
                             }
                             
                             if filter == .none {

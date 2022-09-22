@@ -12,6 +12,9 @@
 		3D7DB73F28DA06CC0039536C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */; };
 		3D7DB74128DA0DAD0039536C /* EmtpyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB74028DA0DAD0039536C /* EmtpyListView.swift */; };
 		3D7DB74328DA18F10039536C /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB74228DA18F10039536C /* FileManager-DocumentsDirectory.swift */; };
+		3D7DB74528DCDBB50039536C /* DetailedPeepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB74428DCDBB50039536C /* DetailedPeepView.swift */; };
+		3D7DB74728DD097E0039536C /* DefaultProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB74628DD097E0039536C /* DefaultProfilePicture.swift */; };
+		3D7DB74928DD0B8F0039536C /* PeepHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB74828DD0B8F0039536C /* PeepHeader.swift */; };
 		3DA9A21F28D298C2000D3BA2 /* PeepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA9A21E28D298C2000D3BA2 /* PeepsView.swift */; };
 		3DA9A22128D298E6000D3BA2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA9A22028D298E6000D3BA2 /* ProfileView.swift */; };
 		3DA9A22328D29B45000D3BA2 /* Peep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA9A22228D29B45000D3BA2 /* Peep.swift */; };
@@ -49,6 +52,9 @@
 		3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		3D7DB74028DA0DAD0039536C /* EmtpyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmtpyListView.swift; sourceTree = "<group>"; };
 		3D7DB74228DA18F10039536C /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		3D7DB74428DCDBB50039536C /* DetailedPeepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPeepView.swift; sourceTree = "<group>"; };
+		3D7DB74628DD097E0039536C /* DefaultProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfilePicture.swift; sourceTree = "<group>"; };
+		3D7DB74828DD0B8F0039536C /* PeepHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepHeader.swift; sourceTree = "<group>"; };
 		3DA9A21E28D298C2000D3BA2 /* PeepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepsView.swift; sourceTree = "<group>"; };
 		3DA9A22028D298E6000D3BA2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3DA9A22228D29B45000D3BA2 /* Peep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peep.swift; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 				3DD89E4A28D76AEF005ABCBB /* PeepCard.swift */,
 				3D7DB73928D935250039536C /* LottieView.swift */,
 				3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */,
+				3D7DB74628DD097E0039536C /* DefaultProfilePicture.swift */,
+				3D7DB74828DD0B8F0039536C /* PeepHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				3DF45CD228D0EEDC00452D35 /* ContentView.swift */,
 				3DA9A21E28D298C2000D3BA2 /* PeepsView.swift */,
 				3DA9A22028D298E6000D3BA2 /* ProfileView.swift */,
+				3D7DB74428DCDBB50039536C /* DetailedPeepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,6 +363,7 @@
 			files = (
 				3D7DB73F28DA06CC0039536C /* EmptyStateView.swift in Sources */,
 				3D7DB74328DA18F10039536C /* FileManager-DocumentsDirectory.swift in Sources */,
+				3D7DB74728DD097E0039536C /* DefaultProfilePicture.swift in Sources */,
 				3DA9A22128D298E6000D3BA2 /* ProfileView.swift in Sources */,
 				3DDF868C28D4F39E0075DCBD /* ImageSaver.swift in Sources */,
 				3D7DB74128DA0DAD0039536C /* EmtpyListView.swift in Sources */,
@@ -361,7 +371,9 @@
 				3DA9A21F28D298C2000D3BA2 /* PeepsView.swift in Sources */,
 				3DD89E4B28D76AEF005ABCBB /* PeepCard.swift in Sources */,
 				3D7DB73A28D935250039536C /* LottieView.swift in Sources */,
+				3D7DB74928DD0B8F0039536C /* PeepHeader.swift in Sources */,
 				3DF45CD128D0EEDC00452D35 /* QRPeepsApp.swift in Sources */,
+				3D7DB74528DCDBB50039536C /* DetailedPeepView.swift in Sources */,
 				3DA9A22328D29B45000D3BA2 /* Peep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

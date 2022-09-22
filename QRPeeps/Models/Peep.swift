@@ -12,6 +12,17 @@ class Peep: Identifiable, Codable {
     var name = "Anonymous"
     var emailAddress = ""
     fileprivate(set) var isContacted = false
+    
+    static var peeper: Peep = Peep(name: "Peeper Peepo", emailAddress: "peeper.peepo@mail.com")
+    
+    init(name: String, emailAddress: String) {
+        self.name = name
+        self.emailAddress = emailAddress
+    }
+    
+    init() {
+
+    }
 }
 
 @MainActor class Peeps: ObservableObject {
