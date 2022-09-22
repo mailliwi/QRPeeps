@@ -22,18 +22,20 @@ struct PeepsView: View {
         NavigationView {
             List {
                 ForEach(filteredPeeps) { peep in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(peep.name)
-                            Text(peep.emailAddress)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if filter == .none {
-                            Spacer()
-                            Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                .foregroundColor(peep.isContacted ? .green : .red)
+                    NavigationLink(destination: Text(peep.name)) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(peep.name)
+                                Text(peep.emailAddress)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            if filter == .none {
+                                Spacer()
+                                Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                    .foregroundColor(peep.isContacted ? .green : .red)
+                            }
                         }
                     }
                     .swipeActions {
@@ -59,7 +61,7 @@ struct PeepsView: View {
                             }
                             .tint(.orange)
                         }
-                    }
+                }
                 }
             }
             .navigationTitle(title)
