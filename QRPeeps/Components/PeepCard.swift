@@ -9,26 +9,23 @@ import SwiftUI
 
 struct PeepCard: View {
     let peep: Peep
+    let filter: PeepFilterType
     
     var body: some View {
         HStack {
-            Image(systemName: "person.fill")
-                .padding(6)
-                .foregroundColor(.gray)
-                .background(.white)
-                .clipShape(Circle())
-            
             VStack(alignment: .leading) {
                 Text(peep.name)
-                    .font(.headline)
                 Text(peep.emailAddress)
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .textCase(.lowercase)
             }
             
-            Spacer()
-            Image(systemName: "circle")
-                .foregroundColor(peep.isContacted ? .green : .red)
+            if filter == .none {
+                Spacer()
+                Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
+                    .foregroundColor(peep.isContacted ? .green : .red)
+            }
         }
         .padding(.vertical, 6)
     }

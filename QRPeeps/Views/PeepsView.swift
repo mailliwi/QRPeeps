@@ -23,22 +23,7 @@ struct PeepsView: View {
             List {
                 ForEach(filteredPeeps) { peep in
                     NavigationLink(destination: DetailedPeepView(peep: peep)) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(peep.name)
-                                Text(peep.emailAddress)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .textCase(.lowercase)
-                            }
-                            
-                            if filter == .none {
-                                Spacer()
-                                Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                    .foregroundColor(peep.isContacted ? .green : .red)
-                            }
-                        }
-                        .padding(.vertical, 6)
+                        PeepCard(peep: peep, filter: filter)
                     }
                     .swipeActions {
                         if peep.isContacted {
@@ -125,14 +110,6 @@ struct PeepsView: View {
                 Text("By pressing 'delete', your list of peeps will be cleared out.\n\nThis action is irreversible.\nDo you wish to continue?")
             })
         }
-    }
-    
-    enum PeepFilterType {
-        case none, contacted, uncontacted
-    }
-    
-    enum PeepSortType {
-        case name, date
     }
     
     var title: String {
