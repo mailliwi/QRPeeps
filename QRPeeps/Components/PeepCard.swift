@@ -26,9 +26,6 @@ struct PeepCard: View {
                 Spacer()
                 Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
                     .foregroundColor(peep.isContacted ? .green : .red)
-                    .onChange(of: peep.isContacted) { newValue in
-                        print("blabla")
-                    }
             }
         }
         .padding(.vertical, 6)
