@@ -29,6 +29,8 @@ class Peep: Identifiable, Codable {
     @Published private(set) var people: [Peep]
     let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedData")
     
+    static let shared = Peeps()
+    
     init() {
         if let data = try? Data(contentsOf: savePath) {
             if let decoded = try? JSONDecoder().decode([Peep].self, from: data) {

@@ -15,7 +15,6 @@ struct PeepsView: View {
     @State private var isShowingAlert = false
     @State private var sortOrder: PeepSortType = .date
     @State private var isShowingSortOptions = false
-    
     @StateObject var viewModel = ViewModel()
     
     let filter: PeepFilterType
@@ -84,7 +83,7 @@ struct PeepsView: View {
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(codeTypes: [.qr], completion: handleScan)
+                CodeScannerView(codeTypes: [.qr], completion: viewModel.handleScan)
             }
             .confirmationDialog("Sort peeps by", isPresented: $isShowingSortOptions) {
                 Button("Name (A-Z)") { sortOrder = .name }
@@ -130,24 +129,6 @@ struct PeepsView: View {
             return result.sorted { $0.name < $1.name }
         } else {
             return result
-        }
-    }
-    
-    func handleScan(result: Result<ScanResult, ScanError>) {
-        self.isShowingScanner = false
-        
-        switch result {
-        case .success(let result):
-            let details = result.string.components(separatedBy: "\n")
-            guard details.count == 2 else { return }
-            
-            let scannedPeep = Peep()
-            scannedPeep.name = details[0]
-            scannedPeep.emailAddress = details[1]
-            peeps.add(scannedPeep)
-            
-        case .failure(let error):
-            print("Scanning failed: \(error.localizedDescription)")
         }
     }
 }

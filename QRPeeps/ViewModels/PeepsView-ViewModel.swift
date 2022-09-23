@@ -12,8 +12,6 @@ import CodeScanner
 
 extension PeepsView {
     @MainActor class ViewModel: ObservableObject {
-        @EnvironmentObject var peeps: Peeps
-        
         func addNotification(for peep: Peep) {
             let center = UNUserNotificationCenter.current()
             
@@ -43,6 +41,26 @@ extension PeepsView {
                         }
                     }
                 }
+            }
+        }
+        
+        func handleScan(result: Result<ScanResult, ScanError>) {
+//            self.isShowingScanner = false
+            
+            switch result {
+            case .success(let result):
+                let details = result.string.components(separatedBy: "\n")
+                guard details.count == 2 else { return }
+                
+                let scannedPeep = Peep()
+                scannedPeep.name = details[0]
+                scannedPeep.emailAddress = details[1]
+                
+                let peeps = Peeps.shared
+                peeps.add(scannedPeep)
+                
+            case .failure(let error):
+                print("Scanning failed: \(error.localizedDescription)")
             }
         }
     }
