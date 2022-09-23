@@ -10,6 +10,7 @@ import SwiftUI
 struct PeepCard: View {
     let peep: Peep
     let filter: PeepFilterType
+    let isContacted: Bool
     
     var body: some View {
         HStack {
@@ -25,6 +26,9 @@ struct PeepCard: View {
                 Spacer()
                 Image(systemName: peep.isContacted ? "checkmark.circle.fill" : "xmark.circle.fill")
                     .foregroundColor(peep.isContacted ? .green : .red)
+                    .onChange(of: peep.isContacted) { newValue in
+                        print("blabla")
+                    }
             }
         }
         .padding(.vertical, 6)
