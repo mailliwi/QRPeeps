@@ -16,6 +16,8 @@ struct PeepsView: View {
     @State private var sortOrder: PeepSortType = .date
     @State private var isShowingSortOptions = false
     
+    @StateObject var viewModel = ViewModel()
+    
     let filter: PeepFilterType
     
     var body: some View {
@@ -42,7 +44,7 @@ struct PeepsView: View {
                             .tint(.green)
                             
                             Button {
-                                addNotification(for: peep)
+                                viewModel.addNotification(for: peep)
                             } label: {
                                 Label("Remind Me", systemImage: "bell")
                             }
@@ -76,17 +78,6 @@ struct PeepsView: View {
                     
                     Button {
                         isShowingScanner = true
-                        
-                        // for simulator purposes
-                        // The following lines of code simulate adding a peep to your list
-                        // Needs deleted if planning to use on a real device, otherwise this dummy
-                        // peep will be added on top of the scanned accounts
-                        
-//                        let peep = Peep()
-//                        peep.name = "Kiwiwi"
-//                        peep.emailAddress = "testemail"
-//                        peeps.add(peep)
-                        
                     } label: {
                         Label("Scan QR Code", systemImage: "qrcode.viewfinder")
                     }
@@ -143,7 +134,7 @@ struct PeepsView: View {
     }
     
     func handleScan(result: Result<ScanResult, ScanError>) {
-        isShowingScanner = false
+        self.isShowingScanner = false
         
         switch result {
         case .success(let result):
@@ -157,38 +148,6 @@ struct PeepsView: View {
             
         case .failure(let error):
             print("Scanning failed: \(error.localizedDescription)")
-        }
-    }
-    
-    func addNotification(for peep: Peep) {
-        let center = UNUserNotificationCenter.current()
-        
-        let addRequest = {
-            let content = UNMutableNotificationContent()
-            content.title = "Contact \(peep.name)"
-            content.subtitle = peep.emailAddress
-            content.sound = UNNotificationSound.default
-            
-            var dateComponents = DateComponents()
-            dateComponents.hour = 9
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            center.add(request)
-        }
-        
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized {
-                addRequest()
-            } else {
-                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                    if success {
-                        addRequest()
-                    } else {
-                        print("")
-                    }
-                }
-            }
         }
     }
 }
