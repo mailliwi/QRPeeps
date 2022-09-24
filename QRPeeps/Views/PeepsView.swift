@@ -24,7 +24,7 @@ struct PeepsView: View {
             List {
                 ForEach(filteredPeeps) { peep in
                     NavigationLink(destination: DetailedPeepView(peep: peep)) {
-                        PeepCard(peep: peep, filter: filter, isContacted: peep.isContacted)
+                        PeepCard(peep: peep, isContacted: peep.isContacted, filter: filter)
                     }
                     .swipeActions {
                         if peep.isContacted {

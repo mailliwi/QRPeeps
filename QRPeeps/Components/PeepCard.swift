@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PeepCard: View {
     let peep: Peep
-    let filter: PeepFilterType
     let isContacted: Bool
+    let filter: PeepFilterType
     
     var body: some View {
         HStack {

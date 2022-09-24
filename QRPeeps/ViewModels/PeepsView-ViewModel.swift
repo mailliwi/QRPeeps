@@ -56,6 +56,8 @@ extension PeepsView {
                 scannedPeep.name = details[0]
                 scannedPeep.emailAddress = details[1]
                 
+                // source of issue
+                // UI not updating
                 let peeps = Peeps.shared
                 peeps.add(scannedPeep)
                 
