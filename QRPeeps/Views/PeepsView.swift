@@ -49,7 +49,7 @@ struct PeepsView: View {
                             }
                             .tint(.orange)
                         }
-                }
+                    }
                 }
             }
             .navigationTitle(title)
@@ -83,7 +83,7 @@ struct PeepsView: View {
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(codeTypes: [.qr], completion: viewModel.handleScan)
+                CodeScannerView(codeTypes: [.qr], completion: handleScan)
             }
             .confirmationDialog("Sort peeps by", isPresented: $isShowingSortOptions) {
                 Button("Name (A-Z)") { sortOrder = .name }
@@ -129,6 +129,28 @@ struct PeepsView: View {
             return result.sorted { $0.name < $1.name }
         } else {
             return result
+        }
+    }
+    
+    func handleScan(result: Result<ScanResult, ScanError>) {
+        self.isShowingScanner = false
+        
+        switch result {
+        case .success(let result):
+            let details = result.string.components(separatedBy: "\n")
+            guard details.count == 2 else { return }
+            
+            let scannedPeep = Peep()
+            scannedPeep.name = details[0]
+            scannedPeep.emailAddress = details[1]
+            
+            // source of issue
+            // UI not updating
+            let peeps = Peeps.shared
+            peeps.add(scannedPeep)
+            
+        case .failure(let error):
+            print("Scanning failed: \(error.localizedDescription)")
         }
     }
 }
