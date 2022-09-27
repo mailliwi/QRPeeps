@@ -11,6 +11,7 @@ class Peep: Identifiable, Codable {
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
+    var description = ""
     fileprivate(set) var isContacted = false
     
     static var peeper: Peep = Peep(name: "Peeper Peepo", emailAddress: "peeper.peepo@mail.com")

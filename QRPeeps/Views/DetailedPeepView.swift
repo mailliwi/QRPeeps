@@ -8,30 +8,53 @@
 import SwiftUI
 
 struct DetailedPeepView: View {
+    @State private var description: String = ""
+    @FocusState private var isFocused: Bool
+    
+    private var defaultDescriptionText: String {
+        if isFocused || !description.isEmpty {
+            return ""
+        } else {
+            return "Tap to start editing..."
+        }
+    }
+    
     let peep: Peep
+    let borderColor = Color(red: 0.8, green: 0.8, blue: 0.8, opacity: 1)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             PeepHeader(peep: peep)
             VStack(alignment: .leading, spacing: 12) {
                 Divider()
-                Text("To come for this page:")
+                Text("Notes about this peep:")
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("Ability for user to enter description of the selected peep, similar to the Notes app.\n\nAbility for user to send email to selected peep by tapping the email in the link above.\n\nAbility for user to set a profile picture for the selected peep.")
-                .foregroundColor(.secondary)
                 
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $description)
+                        .frame(height: 250)
+                        .lineLimit(5)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 10)
+                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(borderColor, lineWidth: 1))
+                        .focused($isFocused)
+                    
+                    Text(defaultDescriptionText)
+                        .italic()
+                        .padding()
+                        .foregroundColor(.secondary)
+                        .allowsHitTesting(false)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 12)
         }
         .frame(maxWidth: .infinity)
-    }
-}
-
-struct DetailedPeepView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailedPeepView(peep: Peep.peeper).preferredColorScheme(.dark)
-        DetailedPeepView(peep: Peep.peeper).preferredColorScheme(.light)
+        .navigationTitle(peep.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }

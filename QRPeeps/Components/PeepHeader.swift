@@ -22,9 +22,6 @@ struct PeepHeader: View {
     var body: some View {
         VStack {
             DefaultProfilePicture()
-            Text(peep.name)
-                .font(.system(.largeTitle, design: .rounded))
-                .fontWeight(.bold)
             Button {
                 mailTo(peep.emailAddress)
             } label: {
@@ -32,11 +29,5 @@ struct PeepHeader: View {
                     .textCase(.lowercase)
             }
         }
-    }
-}
-
-struct PeepHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        PeepHeader(peep: Peep.peeper)
     }
 }
