@@ -48,6 +48,14 @@ class Peep: Identifiable, Codable {
         saveToDocumentsDirectory()
     }
     
+    func addDescription(for peep: Peep, description: String) {
+        if let peep = self.people.first(where: { $0.id == peep.id}) {
+            peep.description = description
+        }
+        
+        saveToDocumentsDirectory()
+    }
+    
     func removeAll() {
         people = []
         try? FileManager.default.removeItem(at: savePath)

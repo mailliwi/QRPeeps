@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D4924BB28E347A700D67B69 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924BA28E347A700D67B69 /* HideKeyboard.swift */; };
+		3D4924BD28E38B9F00D67B69 /* CharacterLimitCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924BC28E38B9F00D67B69 /* CharacterLimitCounter.swift */; };
+		3D4924BF28E38ED300D67B69 /* PeepNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924BE28E38ED300D67B69 /* PeepNotes.swift */; };
 		3D7DB73A28D935250039536C /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB73928D935250039536C /* LottieView.swift */; };
 		3D7DB73D28D939550039536C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3D7DB73C28D939550039536C /* Lottie */; };
 		3D7DB73F28DA06CC0039536C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		3D4924BA28E347A700D67B69 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
+		3D4924BC28E38B9F00D67B69 /* CharacterLimitCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLimitCounter.swift; sourceTree = "<group>"; };
+		3D4924BE28E38ED300D67B69 /* PeepNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepNotes.swift; sourceTree = "<group>"; };
 		3D7DB73928D935250039536C /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		3D7DB74028DA0DAD0039536C /* EmtpyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmtpyListView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */,
 				3D7DB74628DD097E0039536C /* DefaultProfilePicture.swift */,
 				3D7DB74828DD0B8F0039536C /* PeepHeader.swift */,
+				3D4924BE28E38ED300D67B69 /* PeepNotes.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			children = (
 				3D7DB74028DA0DAD0039536C /* EmtpyListView.swift */,
 				3D4924BA28E347A700D67B69 /* HideKeyboard.swift */,
+				3D4924BC28E38B9F00D67B69 /* CharacterLimitCounter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				3DDF868C28D4F39E0075DCBD /* ImageSaver.swift in Sources */,
 				3D7DB74128DA0DAD0039536C /* EmtpyListView.swift in Sources */,
 				3DF45CD328D0EEDC00452D35 /* ContentView.swift in Sources */,
+				3D4924BF28E38ED300D67B69 /* PeepNotes.swift in Sources */,
 				3DA9A21F28D298C2000D3BA2 /* PeepsView.swift in Sources */,
 				3DD89E4B28D76AEF005ABCBB /* PeepCard.swift in Sources */,
 				3D7DB73A28D935250039536C /* LottieView.swift in Sources */,
@@ -389,6 +396,7 @@
 				3D7DB74928DD0B8F0039536C /* PeepHeader.swift in Sources */,
 				3DF45CD128D0EEDC00452D35 /* QRPeepsApp.swift in Sources */,
 				3D7DB74528DCDBB50039536C /* DetailedPeepView.swift in Sources */,
+				3D4924BD28E38B9F00D67B69 /* CharacterLimitCounter.swift in Sources */,
 				3D4924BB28E347A700D67B69 /* HideKeyboard.swift in Sources */,
 				3DA9A22328D29B45000D3BA2 /* Peep.swift in Sources */,
 			);

@@ -8,19 +8,10 @@
 import SwiftUI
 
 struct DetailedPeepView: View {
+    @EnvironmentObject var peeps: Peeps
     @State private var description: String = ""
-    @FocusState private var isFocused: Bool
-    
-    private var defaultDescriptionText: String {
-        if isFocused || !description.isEmpty {
-            return ""
-        } else {
-            return "Tap to start editing..."
-        }
-    }
     
     let peep: Peep
-    let borderColor = Color(red: 0.8, green: 0.8, blue: 0.8, opacity: 1)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -31,21 +22,7 @@ struct DetailedPeepView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 
-                ZStack(alignment: .topLeading) {
-                    TextEditor(text: $description)
-                        .frame(height: 250)
-                        .lineLimit(5)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 10)
-                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(borderColor, lineWidth: 1))
-                        .focused($isFocused)
-                    
-                    Text(defaultDescriptionText)
-                        .italic()
-                        .padding()
-                        .foregroundColor(.secondary)
-                        .allowsHitTesting(false)
-                }
+                PeepNotes(peep: peep, description: $description)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 12)
