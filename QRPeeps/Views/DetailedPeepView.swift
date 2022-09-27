@@ -21,7 +21,6 @@ struct DetailedPeepView: View {
                 Text("Notes about this peep:")
                     .font(.headline)
                     .fontWeight(.bold)
-                
                 PeepNotes(peep: peep, description: $description)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

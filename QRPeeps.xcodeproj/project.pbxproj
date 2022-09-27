@@ -10,6 +10,7 @@
 		3D4924BB28E347A700D67B69 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924BA28E347A700D67B69 /* HideKeyboard.swift */; };
 		3D4924BD28E38B9F00D67B69 /* CharacterLimitCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924BC28E38B9F00D67B69 /* CharacterLimitCounter.swift */; };
 		3D4924BF28E38ED300D67B69 /* PeepNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924BE28E38ED300D67B69 /* PeepNotes.swift */; };
+		3D4924C128E3929800D67B69 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4924C028E3929800D67B69 /* Constants.swift */; };
 		3D7DB73A28D935250039536C /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB73928D935250039536C /* LottieView.swift */; };
 		3D7DB73D28D939550039536C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3D7DB73C28D939550039536C /* Lottie */; };
 		3D7DB73F28DA06CC0039536C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */; };
@@ -57,6 +58,7 @@
 		3D4924BA28E347A700D67B69 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		3D4924BC28E38B9F00D67B69 /* CharacterLimitCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLimitCounter.swift; sourceTree = "<group>"; };
 		3D4924BE28E38ED300D67B69 /* PeepNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepNotes.swift; sourceTree = "<group>"; };
+		3D4924C028E3929800D67B69 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D7DB73928D935250039536C /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		3D7DB73E28DA06CC0039536C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		3D7DB74028DA0DAD0039536C /* EmtpyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmtpyListView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		3DF45CFE28D0EF2F00452D35 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3D4924C028E3929800D67B69 /* Constants.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				3DF45CD328D0EEDC00452D35 /* ContentView.swift in Sources */,
 				3D4924BF28E38ED300D67B69 /* PeepNotes.swift in Sources */,
 				3DA9A21F28D298C2000D3BA2 /* PeepsView.swift in Sources */,
+				3D4924C128E3929800D67B69 /* Constants.swift in Sources */,
 				3DD89E4B28D76AEF005ABCBB /* PeepCard.swift in Sources */,
 				3D7DB73A28D935250039536C /* LottieView.swift in Sources */,
 				3D7DB74F28DE5EFD0039536C /* PeepsView-ViewModel.swift in Sources */,

@@ -14,12 +14,17 @@ struct PeepNotes: View {
     @EnvironmentObject var peeps: Peeps
     @FocusState var isFocused: Bool
     
-    private var defaultDescriptionText: String {
+    private var defaultDescription: String {
         if isFocused || !description.isEmpty {
             return ""
         } else {
             return "Tap to start editing..."
         }
+    }
+    
+    private var trimmedDescription: String {
+        let trimmedString = String(description.prefix(kCharacterLimit))
+        return trimmedString
     }
     
     func fetchPeepDescription() {
@@ -37,17 +42,17 @@ struct PeepNotes: View {
                 .focused($isFocused)
             
             
-            Text(defaultDescriptionText)
+            Text(defaultDescription)
                 .italic()
                 .padding()
                 .foregroundColor(.secondary)
                 .allowsHitTesting(false)
         }
         .onAppear(perform: fetchPeepDescription)
-        .onChange(of: description) { _ in
-            peeps.addDescription(for: peep, description: description)
+        .onChange(of: trimmedDescription) { _ in
+            peeps.addDescription(for: peep, description: trimmedDescription)
         }
-        .characterLimitCounter(counter: description.count)
+        .characterLimitCounter(for: description.count)
     }
 }
 
