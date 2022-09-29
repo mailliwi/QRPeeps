@@ -13,9 +13,9 @@ struct CharacterLimitCounter: ViewModifier {
     func body(content: Content) -> some View {
         ZStack(alignment: .bottomTrailing) {
             content
-            Text("Character limit: \(counter)/\(kCharacterLimit)")
+            Text("Character limit: \(counter)/\(Constants.kCharacterLimit)")
                 .font(.caption)
-                .foregroundColor(counter > kCharacterLimit ? .red : .secondary)
+                .foregroundColor(counter > Constants.kCharacterLimit ? .red : .secondary)
                 .padding()
         }
     }

@@ -22,6 +22,7 @@ struct PeepHeader: View {
     var body: some View {
         VStack {
             DefaultProfilePicture()
+                .padding(.bottom, 12)
             Button {
                 mailTo(peep.emailAddress)
             } label: {

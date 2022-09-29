@@ -23,7 +23,7 @@ struct PeepNotes: View {
     }
     
     private var trimmedDescription: String {
-        let trimmedString = String(description.prefix(kCharacterLimit))
+        let trimmedString = String(description.prefix(Constants.kCharacterLimit))
         return trimmedString
     }
     
