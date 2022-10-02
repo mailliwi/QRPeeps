@@ -25,7 +25,7 @@ Made using Figma.
 <p align="center">
   <img src="media/row1.png"/>
   <img src="media/row2.png"/>
-  <img src="media/notification.png" width="300"/>
+  <img src="media/row3.png"/>
 </p>
 
 ## Preview GIF
@@ -38,6 +38,4 @@ Lottie empty state app demo.
 * MVVM pattern
 * Error handling (needs improvement)
 * Prevent being able to add same person more than once
-* NavigationLink for each Peep to allow for:
-  * Detailed view of selected Peep
-  * Editing of selected Peep (add picture, other...)
+* Improve reusability of components (profile picture mainly)
