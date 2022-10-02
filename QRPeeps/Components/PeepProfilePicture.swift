@@ -11,6 +11,12 @@ struct PeepProfilePicture: View {
     let peep: Peep
     @Binding var image: UIImage
     
+    func fetchPeepImage() {
+            if let dataImage = UIImage(data: peep.image!) {
+                image = dataImage
+            }
+        }
+    
     var body: some View {
         Image(uiImage: image)
             .resizable()
@@ -18,5 +24,6 @@ struct PeepProfilePicture: View {
             .frame(width: 150, height: 150)
             .clipShape(Circle())
             .overlay(Circle().stroke(.gray, lineWidth: 4))
+            .onAppear(perform: fetchPeepImage)
     }
 }
