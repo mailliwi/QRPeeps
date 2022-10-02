@@ -17,25 +17,13 @@ struct PeepHeader: View {
     @State private var isShowingImagePicker: Bool = false
     @State private var image = UIImage()
     
-    func fetchPeepImage() {
-        if let dataImage = UIImage(data: peep.image!) {
-            image = dataImage
-        }
-    }
-    
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
                 if peep.image == nil {
                     DefaultProfilePicture()
                 } else {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 150, height: 150)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(.gray, lineWidth: 4))
-                        .onAppear(perform: fetchPeepImage)
+                    PeepProfilePicture(peep: peep, image: $image)
                 }
                 
                 Button {
