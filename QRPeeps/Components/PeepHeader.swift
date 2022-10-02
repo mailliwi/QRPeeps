@@ -31,6 +31,7 @@ struct PeepHeader: View {
                 } else {
                     Image(uiImage: image)
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 150, height: 150)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(.gray, lineWidth: 4))
