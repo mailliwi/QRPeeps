@@ -9,21 +9,13 @@ import SwiftUI
 
 struct DefaultProfilePicture: View {
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            Image(systemName: "person")
-                .font(.system(size: 75))
-                .frame(width: 150, height: 150)
-                .foregroundColor(.gray)
-                .background(.white)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(.gray, lineWidth: 4))
-            
-            Button {
-                
-            } label: {
-                Image(systemName: "square.and.pencil")
-            }
-        }
+        Image(systemName: "person")
+            .font(.system(size: 75))
+            .frame(width: 150, height: 150)
+            .foregroundColor(.gray)
+            .background(.white)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(.gray, lineWidth: 4))
     }
 }
 

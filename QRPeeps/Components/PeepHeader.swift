@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct PeepHeader: View {
-    @Environment(\.openURL) var openURL
     let peep: Peep
     
-    func mailTo(_ email: String) {
-        let mailto = "mailto:\(email)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let url = URL(string: mailto!)!
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:])
-        }
-    }
+    @Environment(\.openURL) var openURL
+    @StateObject var viewModel = ViewModel()
     
     var body: some View {
         VStack {
-            DefaultProfilePicture()
-                .padding(.bottom, 12)
+            ZStack(alignment: .bottomTrailing) {
+                DefaultProfilePicture()
+                Button {
+                    // show imagepicker
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                }
+            }
+            .padding(.bottom, 12)
+            
             Button {
-                mailTo(peep.emailAddress)
+                viewModel.mailTo(peep.emailAddress)
             } label: {
                 Label(peep.emailAddress, systemImage: "envelope")
                     .textCase(.lowercase)

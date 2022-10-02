@@ -12,10 +12,10 @@ struct ProfileView: View {
     @State private var name = ""
     @State private var emailAddress = ""
     @State private var qrCode = UIImage()
-    let context = CIContext()
-    let filter = CIFilter.qrCodeGenerator()
     
     func generateQRCode(from string: String) -> UIImage {
+        let context = CIContext()
+        let filter = CIFilter.qrCodeGenerator()
         filter.message = Data(string.utf8)
         
         if let outputImage = filter.outputImage {

@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Peep: Identifiable, Codable {
+    
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
     var description = ""
+    var image: Data?
     fileprivate(set) var isContacted = false
     
     static var peeper: Peep = Peep(name: "Peeper Peepo", emailAddress: "peeper.peepo@mail.com")
@@ -30,8 +33,6 @@ class Peep: Identifiable, Codable {
     @Published private(set) var people: [Peep]
     let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedData")
     
-    static let shared = Peeps()
-    
     init() {
         if let data = try? Data(contentsOf: savePath) {
             if let decoded = try? JSONDecoder().decode([Peep].self, from: data) {
@@ -49,7 +50,7 @@ class Peep: Identifiable, Codable {
     }
     
     func addDescription(for peep: Peep, description: String) {
-        if let peep = self.people.first(where: { $0.id == peep.id}) {
+        if let peep = self.people.first(where: { $0.id == peep.id }) {
             peep.description = description
         }
         
@@ -63,15 +64,15 @@ class Peep: Identifiable, Codable {
         saveToDocumentsDirectory()
     }
     
-    private func saveToDocumentsDirectory() {
-        if let encoded = try? JSONEncoder().encode(self.people) {
-            try? encoded.write(to: savePath, options: [.atomic, .completeFileProtection])
-        }
-    }
-    
     func toggleIsContacted(for peep: Peep) {
         objectWillChange.send()
         peep.isContacted.toggle()
         saveToDocumentsDirectory()
+    }
+    
+    private func saveToDocumentsDirectory() {
+        if let encoded = try? JSONEncoder().encode(self.people) {
+            try? encoded.write(to: savePath, options: [.atomic, .completeFileProtection])
+        }
     }
 }
