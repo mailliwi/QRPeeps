@@ -11,14 +11,34 @@ struct PeepHeader: View {
     let peep: Peep
     
     @Environment(\.openURL) var openURL
+    @EnvironmentObject var peeps: Peeps
     @StateObject var viewModel = ViewModel()
+    
+    @State private var isShowingImagePicker: Bool = false
+    @State private var image = UIImage()
+    
+    func fetchPeepImage() {
+        if let dataImage = UIImage(data: peep.image!) {
+            image = dataImage
+        }
+    }
     
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                DefaultProfilePicture()
+                if peep.image == nil {
+                    DefaultProfilePicture()
+                } else {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(.gray, lineWidth: 4))
+                        .onAppear(perform: fetchPeepImage)
+                }
+                
                 Button {
-                    // show imagepicker
+                    isShowingImagePicker = true
                 } label: {
                     Image(systemName: "square.and.pencil")
                 }
@@ -30,6 +50,12 @@ struct PeepHeader: View {
             } label: {
                 Label(peep.emailAddress, systemImage: "envelope")
                     .textCase(.lowercase)
+            }
+        }
+        .sheet(isPresented: $isShowingImagePicker) {
+            ImagePicker(sourceType: .photoLibrary) { uiimage in
+                image = uiimage
+                peeps.addProfilePicture(for: peep, image: uiimage)
             }
         }
     }

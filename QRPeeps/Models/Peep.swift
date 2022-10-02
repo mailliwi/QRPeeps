@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class Peep: Identifiable, Codable {
-    
+class Peep: Identifiable, Codable, Equatable {
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
@@ -25,7 +24,11 @@ class Peep: Identifiable, Codable {
     }
     
     init() {
-
+        
+    }
+    
+    static func == (lhs: Peep, rhs: Peep) -> Bool {
+        return lhs.name == rhs.name
     }
 }
 
@@ -52,6 +55,19 @@ class Peep: Identifiable, Codable {
     func addDescription(for peep: Peep, description: String) {
         if let peep = self.people.first(where: { $0.id == peep.id }) {
             peep.description = description
+        }
+        
+        saveToDocumentsDirectory()
+    }
+    
+    func addProfilePicture(for peep: Peep, image: UIImage) {
+        if let peep = self.people.first(where: { $0.id == peep.id }) {
+            print("Selected peep to change image is: \(peep.name)")
+            if let index = people.firstIndex(of: peep) {
+                if let pngRepresentation = image.pngData() {
+                    self.people[index].image = pngRepresentation
+                }
+            }
         }
         
         saveToDocumentsDirectory()

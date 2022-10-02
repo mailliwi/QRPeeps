@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DetailedPeepView: View {
-    @EnvironmentObject var peeps: Peeps
     @State private var description: String = ""
     
     let peep: Peep

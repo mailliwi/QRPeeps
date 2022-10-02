@@ -27,6 +27,7 @@
 		3DA9A22128D298E6000D3BA2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA9A22028D298E6000D3BA2 /* ProfileView.swift */; };
 		3DA9A22328D29B45000D3BA2 /* Peep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA9A22228D29B45000D3BA2 /* Peep.swift */; };
 		3DA9A22628D3DABD000D3BA2 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 3DA9A22528D3DABD000D3BA2 /* CodeScanner */; };
+		3DC9326228E9E87500E70198 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9326128E9E87500E70198 /* ImagePicker.swift */; };
 		3DD89E4B28D76AEF005ABCBB /* PeepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD89E4A28D76AEF005ABCBB /* PeepCard.swift */; };
 		3DDF868C28D4F39E0075DCBD /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF868B28D4F39E0075DCBD /* ImageSaver.swift */; };
 		3DF45CD128D0EEDC00452D35 /* QRPeepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF45CD028D0EEDC00452D35 /* QRPeepsApp.swift */; };
@@ -74,6 +75,7 @@
 		3DA9A21E28D298C2000D3BA2 /* PeepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepsView.swift; sourceTree = "<group>"; };
 		3DA9A22028D298E6000D3BA2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3DA9A22228D29B45000D3BA2 /* Peep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peep.swift; sourceTree = "<group>"; };
+		3DC9326128E9E87500E70198 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3DD89E4A28D76AEF005ABCBB /* PeepCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepCard.swift; sourceTree = "<group>"; };
 		3DDF868B28D4F39E0075DCBD /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		3DF45CCD28D0EEDC00452D35 /* QRPeeps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRPeeps.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 				3D7DB74228DA18F10039536C /* FileManager-DocumentsDirectory.swift */,
 				3D7DB74A28DE2E170039536C /* PeepFilterType.swift */,
 				3D7DB74C28DE2F440039536C /* PeepSortType.swift */,
+				3DC9326128E9E87500E70198 /* ImagePicker.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				3D4924BF28E38ED300D67B69 /* PeepNotes.swift in Sources */,
 				3DA9A21F28D298C2000D3BA2 /* PeepsView.swift in Sources */,
 				3D4924C128E3929800D67B69 /* Constants.swift in Sources */,
+				3DC9326228E9E87500E70198 /* ImagePicker.swift in Sources */,
 				3DD89E4B28D76AEF005ABCBB /* PeepCard.swift in Sources */,
 				3D7DB73A28D935250039536C /* LottieView.swift in Sources */,
 				3D7DB74F28DE5EFD0039536C /* PeepsView-ViewModel.swift in Sources */,
